@@ -26,7 +26,7 @@ with open(fileName, "r") as file:
     if not(line): break
     if (line.replace(" ", "")).isalpha() == False and (line.replace(" ", "")).isdigit() == False: continue
     num = ""
-    if line.isdigit(): nums.append(line)
+    if line.isdigit() and checkNum(line): nums.append(line)
     else:
       for index in range(0, len(line)):
         if line[index].isdigit():
@@ -34,7 +34,7 @@ with open(fileName, "r") as file:
         if not(line[index].isdigit()) or index == (len(line) - 1):
           if checkNum(num): nums.append(num)
           num = ""
-          
+
 for num in nums:
   print(num)
   acceptChar = []
@@ -42,4 +42,3 @@ for num in nums:
     if int(char) % 2 == 0: acceptChar.append(char)
   print("Четные цифры этого числа: " + ", ".join(list(map(lambda x: dc_cifr[x], acceptChar))))
   print("____________________")
-
